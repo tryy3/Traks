@@ -20,30 +20,6 @@
         <script type="text/javascript" language="javascript" src="js/jquery.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="js/turf.js"></script>
-        <script type="text/javascript">
-            function showTheFilters(){
-                $(".options-panel").toggleClass("here");
-            }
-
-            function showTheChecks(){
-                $(".filter-company-check").toggleClass("showCheck");
-            }
-
-            function toggleLanding(){
-                $(".landing").toggleClass("landingBye");
-                $(".landing-home").toggleClass("landingBye");
-            }
-
-            function addAbout(){
-                $(".landing-home").addClass("landingBye");
-                setTimeout(function(){ $(".landing-info").addClass("landingHi"); }, 1000);
-            }
-
-            function removeAbout(){
-                $(".landing-info").removeClass("landingHi");
-                setTimeout(function(){ $(".landing-home").removeClass("landingBye"); }, 1000);
-            }
-        </script>
     </head>
     <body>
         <div class="landing">
