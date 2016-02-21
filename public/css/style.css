@@ -1,0 +1,461 @@
+input[type="text"] {
+    width: 250px;
+    padding: 5px;
+    margin: 10px 10px 10px 10px;
+    border: none;
+    border-bottom: solid 2px #c9c9c9;
+    text-align: center;
+    transition: border 0.3s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: none;
+    -moz-border-radius: none;
+    -ms-border-radius: none;
+    -o-border-radius: none;
+    border-radius: none;
+}
+
+input[type="text"]:hover {
+    color: black;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+label{
+    display: block;
+}
+
+label, #filter-company-toggle {
+    width: 250px;
+    padding: 5px;
+    margin: 10px 10px 10px 10px;
+    border: none;
+    text-align: center;
+    color: #ADADAD;
+}
+
+label:hover, #filter-company-toggle:hover {
+    color: black;
+    cursor: pointer;
+}
+
+input[type="text"]:focus,
+input[type="text"].focus {
+    border-bottom: solid 2px #969696;
+    outline: none;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    text-align: center;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;
+}
+
+:-ms-input-placeholder {
+    text-align: center;
+}
+
+.dropdown-check-list {
+    display: inline-block;
+}
+.dropdown-check-list .anchor {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 50px 5px 10px;
+    border: 1px solid #ccc;
+}
+.dropdown-check-list .anchor:after {
+    position: absolute;
+    content: "";
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    padding: 5px;
+    right: 10px;
+    top: 20%;
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+.dropdown-check-list .anchor:active:after {
+    right: 8px;
+    top: 21%;
+}
+.dropdown-check-list ul.items {
+    padding: 2px;
+    display: none;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.dropdown-check-list ul.items li {
+    list-style: none;
+}
+.dropdown-check-list.visible .anchor {
+    color: #0094ff;
+}
+.dropdown-check-list.visible .items {
+    display: block;
+}
+
+html, body {
+    height: 100%; margin: 0; padding: 0;
+    overflow-x: hidden;
+    font-family: "Roboto", "Arial", sans-serif;
+}
+
+.maphold {
+    width: 100vw;
+    height: 100%;
+    float: left;
+}
+
+.mapholdan {
+    transition: width 1s;
+}
+
+.sideactive > .maphold {
+    width: 80vw;
+}
+
+.sidehold {
+    position: absolute;
+    right: -20vw;
+    top: 0px;
+    width: 20vw;
+    max-height: 100vh;
+    overflow-y: scroll;
+    float: left;
+}
+
+.sidehold button {
+    text-align: center;
+}
+
+.sideholdan {
+    transition: right 1s;
+}
+
+.sideactive > .sidehold {
+    right: 0;
+    display: block;
+    width: 20vw;
+}
+@media (max-width: 900px) {
+    .sideactive > .maphold {
+        width: 50vw;
+    }
+    .sidehold {
+        right: -50vw;
+        width: 50vw;
+    }
+    .sideactive > .sidehold {
+        width: 50vw;
+    }
+}
+.here {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transition: opacity 0.3s;
+}
+
+#map {
+    height: 100%;
+}
+
+#options-overlay {
+    width: inherit;
+    height: 100vh;
+    position: fixed;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    z-index: 2;
+    pointer-events: none;
+    font-family: "Roboto", "Arial", sans-serif;
+}
+
+#options-toggle, .options-panel{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* IE/Edge */
+    user-select: none;           /* non-prefixed version, currently not supported by any browser */
+    right: 0;
+    left: 0;
+    position: relative;
+    display: block;
+    padding: 5px 5px 5px 5px;
+    background-color: white;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.3);
+}
+
+#options-home {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* IE/Edge */
+    user-select: none;           /* non-prefixed version, currently not supported by any browser */
+    position: relative;
+    right: 0;
+    float: right;
+    margin: 10px 10px 0px 0px;
+    display: block;
+    padding: 5px 5px 5px 5px;
+    background-color: white;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    width: 45px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.3);
+    font-size: 13px;
+    text-align: center;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+#options-home p{
+    margin: 0 0 0 0;
+}
+
+#options-toggle{
+    font-size: 13px;
+    text-align: center;
+    width: 45px;
+    cursor: pointer;
+    pointer-events: auto;
+    margin: 10px auto 0px auto;
+}
+
+#options-toggle p{
+    margin: 0 0 0 0;
+}
+
+.options-panel{
+    width: 280px;
+    margin: 10px auto 0 auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.filter-company-check{
+    max-height: 40vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: none;
+}
+
+.showCheck {
+    display: block;
+}
+
+.history, .follow, .closeside, .spinny, .start {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* IE/Edge */
+    user-select: none;           /* non-prefixed version, currently not supported by any browser */
+    background-color: #EEEEEE;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #EEEEEE;
+    display: block;
+    cursor: pointer;
+    color: #000000;
+    font-family: "Roboto", "Arial", sans-serif;
+    font-size: 17px;
+    text-decoration: none;
+    padding: 8px;
+    margin: 15px auto;
+    text-align: center;
+}
+
+.history:focus, .follow:focus, .closeside:focus, .spinny:focus {
+    outline: 0;
+}
+
+.history:hover, .follow:hover, .closeside:hover, .spinny:hover, .start:hover {
+    background-color: #D6D6D6;
+    border: 1px solid #D6D6D6;
+}
+
+.toggleButton {
+    background-color: #BFBFBF;
+    border: 1px solid #BFBFBF;
+}
+
+.toggleButton:hover {
+    background-color: #ADADAD !important;
+    border: 1px solid #ADADAD !important;
+}
+
+.spinny {
+    margin-top: 40px;
+}
+
+.landing {
+    font-family: "Roboto", "Arial", sans-serif;
+    text-align: center;
+    position: fixed;
+    opacity: 1;
+    pointer-events: auto;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    z-index: 5;
+    background: rgba(255,255,255,0.6); /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,0.6) 0%, #ffffff 64%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,0.6) 0%,#ffffff 64%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.6) 0%,#ffffff 64%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='rgba(255,255,255,0.6', endColorstr='#ffffff',GradientType=1); /* IE6-9 fallback on horizontal gradient */
+    transition: opacity 1s;
+}
+
+.landing h1 {
+    font-size: 84pt;
+    font-weight: bold;
+}
+
+.landing h3 {
+    margin-top: -5px;
+    font-size: 40pt;
+    font-weight: bold;
+}
+
+.start {
+    font-size: 32pt;
+    font-weight: bold;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* IE/Edge */
+    user-select: none;           /* non-prefixed version, currently not supported by any browser */
+    background-color: rgba(255,255,255,0);
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    border: 3px solid #000000;
+    cursor: pointer;
+    font-family: "Roboto", "Arial", sans-serif;
+    color: #000000;
+    padding: 15px;
+    text-align: center;
+    margin: 20px auto;
+    transition: background-color 0.3s, border 0.3s, color 0.3s;
+}
+
+.start:focus {
+    outline: 0;
+}
+
+.start:hover {
+    color: white;
+    background-color: #000000;
+    border: 3px solid rgba(255,255,255,0);
+    transition: background-color 0.3s, border 0.3s, color 0.3s;
+}
+
+.landing-links {
+    text-decoration: none;
+    font-size: 32px;
+    font-family: "Roboto", "Arial", sans-serif;
+    font-weight: bold;
+    color: #000000;
+    display: inline-block;
+    margin: 0px 20px 0px 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.landing-links:hover {
+    color: #111111;
+    transition: color 0.3s;
+}
+
+.landing-info {
+    position: fixed;
+    width: 50vw;
+    height: 80vh;
+    margin: 10vh 25vw;
+    opacity: 0;
+    transition: opacity 1s;
+    pointer-events: none;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.landing-info p {
+    font-size: 16px;
+}
+
+.landing-home {
+    position: fixed;
+    width: 80vw;
+    height: 100vh;
+    margin-left:10vw;
+    margin-top:10vh;
+    opacity: 1;
+    transition: opacity 1s;
+    pointer-events: auto;
+}
+
+.landingHi {
+    opacity: 1;
+    transition: opacity 1s;
+    pointer-events: auto;
+}
+
+.landingBye {
+    opacity: 0;
+    transition: opacity 1s;
+    pointer-events: none;
+}
+
+.url {
+    color: #222222;
+}
+
+.traksPic {
+    margin: 12vh 0px 0px 0px;
+    height: 128px;
+    width: 128px;
+}
+
+@media screen and (max-width: 600px) {
+    .traksPic {
+        margin: 0vh 0px 0px 0px;
+    }
+
+    .landing h1 {
+        font-size: 64pt;
+    }
+
+    .landing h3 {
+        font-size: 32pt;
+    }
+
+    .landing-links {
+        font-size: 26pt;
+    }
+}

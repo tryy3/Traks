@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- META -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta name="description" itemprop="description" content="Traks" />
+        <meta content="DynamicallyTyped" name="author"/>
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+        <title>Traks</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/normalize.css">
+
+        <!-- JS -->
+        <script type="text/javascript" src="js/moment.min.js"></script>
+        <script type="text/javascript" language="javascript" src="js/jquery.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="js/turf.js"></script>
+        <script type="text/javascript">
+            function showTheFilters(){
+                $(".options-panel").toggleClass("here");
+            }
+
+            function showTheChecks(){
+                $(".filter-company-check").toggleClass("showCheck");
+            }
+
+            function toggleLanding(){
+                $(".landing").toggleClass("landingBye");
+                $(".landing-home").toggleClass("landingBye");
+            }
+
+            function addAbout(){
+                $(".landing-home").addClass("landingBye");
+                setTimeout(function(){ $(".landing-info").addClass("landingHi"); }, 1000);
+            }
+
+            function removeAbout(){
+                $(".landing-info").removeClass("landingHi");
+                setTimeout(function(){ $(".landing-home").removeClass("landingBye"); }, 1000);
+            }
+        </script>
+    </head>
+    <body>
+        <div class="landing">
+            <div class="landing-home">
+                <img class="traksPic" src="/img/traks.gif"></img>
+                <h1 style="margin: 0px 0px 0px 0px; font-weight: 900;">Traks</h1>
+                <h3>Live train visualization.</h3>
+                <!--<button style="text-align: center;" class="start" onClick="toggleLanding();">Start</button>-->
+                <a class="landing-links" onClick="toggleLanding();">Start</a>
+                <a class="landing-links" onClick="addAbout();">About</a>
+                <a class="landing-links" href="test.html">Test Page</a>
+            </div>
+            <div class="landing-info">
+                <h3 style="font-weight: 900;">About Traks</h3>
+                <h2 style="margin-top: -40px; margin-bottom: 40px;">Developers: Dennis Planting, Michael Leng, Max Campbell</h2>
+                <h2>What Is Traks?</h2>
+                <p>Traks is a web application that visualizes train movements throughout the UK using data from <span class="url">https://datafeeds.networkrail.co.uk/ntrod/</span>. Traks was created in a 48 hour timespan during the February 2016 Koding Inc. hackathon.</p>
+                <h2>Train Information</h2>
+                <p>Each train can also be clicked on to reveal additional information. Upon clicking a particular train, the map will center around it and a sidebar will appear. There are a few options in the train information panel available for use:</p>
+                <p>1. Toggle Spin: This will continuously spin the currently selected train.</p>
+                <p>2. Toggle Route: This will show the past and future path of the currently selected train.</p>
+                <p>3. Toggle Follow: This will move the map to follow the currently selected train</p>
+                <p>4. Close: This will close the sidebar.</p>
+                <h2>Filtering</h2>
+                <p>There are three different filter types:</p>
+                <p>1. Train ID: Filter train by its unique ID.</p>
+                <p>2. Stations: Filter trains that have passed or are going to pass a specific station.</p>
+                <p>3. Companies: Filter trains run by a specific company.</p>
+                <h2>Other Notes</h2>
+                <p>1. Some train headings may be slightly off from its actual heading. This is due to some inherent error in the calculation of the train's bearing.</p>
+                <p>2. Depending on the time this web application is viewed, either a large or small number of trains may be displayed (due to time zone differences). If none or very few trains are displayed, please use the "Test Page" page.</p>
+                <p>3. We only have access to live train data for trains in the UK. As such, this web application only displays trains in the UK (for now).</p>
+                <p>4. The exact positions, arrival times, and some other data may not match exactly to the train's actual movements, actual arrival times, etc. Some data is calculated and extrapolated from the data provided from the live feed.</p>
+                <a class="landing-links" onClick="removeAbout();">Home</a>
+                <a class="landing-links" href="test.html">Test Page</a>
+            </div>
+        </div>
+        <div class="maphold">
+            <div id="options-overlay">
+                <div id="options-home" onClick="toggleLanding();">
+                    <p>Home</p>
+                </div>
+                <div id="options-toggle" onClick="showTheFilters();">
+                    <p>Filters</p>
+                </div>
+                <div class="options-panel">
+                    <div id="filter-train">
+                        <input type="text" class="filter-train-input filter" placeholder="Filter by train ID">
+                    </div>
+                    <div id="filter-station">
+                        <input type="text" class="filter-station-input filter" placeholder="Filter by station name">
+                    </div>
+                    <div id="filter-company">
+                        <p id="filter-company-toggle" onClick="showTheChecks();">Filter by train company</p>
+                        <div class="filter-company-check">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="map"></div>
+        </div>
+        <div class="sidehold hide">
+
+        </div>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4htWDQgXpiU5GCG7zxBfizUau4C6ocE0"></script>
+      <script src="js/objects/Companies.js"></script>
+      <script src="js/objects/Cords.js"></script>
+      <script src="js/objects/Train.js"></script>
+      <script src="js/index.js"></script>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "hacksummit-trains",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "woooooo people",
+  "license": "ISC",
+  "dependencies": {
+    "csv": "^0.4.6",
+    "express": "^4.13.4",
+    "fast-csv": "^1.0.0",
+    "jsonfile": "^2.2.3",
+    "lwip": "0.0.8",
+    "ospoint": "^0.2.0",
+    "socket.io": "^1.4.5",
+    "stomp-client": "^0.8.1"
+  }
+}
