@@ -168,6 +168,16 @@ Train.prototype.SetIcon = function() {
             convertedRotation = 90 - this.bearing;
         }
 
+        var λ1 = this.lastLocation.latlng().lng;
+        var λ2 = this.nextLocation.latlng().lng;
+        var φ1 = this.lastLocation.latlng().lat;
+        var φ2 = this.nextLocation.latlng().lat;
+
+        var y = Math.sin(λ2-λ1) * Math.cos(φ2);
+        var x = Math.cos(φ1)*Math.sin(φ2) -
+                Math.sin(φ1)*Math.cos(φ2)*Math.cos(λ2-λ1);
+        var brng = Math.atan2(y, x) * (180 / Math.PI);
+
         icon = {
             path: trainSvg,
             fillColor: "black",
@@ -176,7 +186,7 @@ Train.prototype.SetIcon = function() {
             strokeColor: "black",
             strokeWeight: .5,
             anchor: new google.maps.Point(32, 32),
-            rotation: convertedRotation - 90
+            rotation: brng - 90
         };
     }
     if (this.trainIcon.rotation != icon.rotation) {

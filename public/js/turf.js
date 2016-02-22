@@ -2264,6 +2264,8 @@ module.exports = function (point1, point2) {
 
     var bearing = toDeg(Math.atan2(a, b));
 
+    bearing = (bearing + 360) % 360;
+
     return bearing;
 };
 
@@ -4299,7 +4301,7 @@ return false;}};})();
 /*
   javascript.util is a port of selected parts of java.util to JavaScript which
   main purpose is to ease porting Java code to JavaScript.
-  
+
   The MIT License (MIT)
 
   Copyright (C) 2011-2014 by The Authors
@@ -5321,7 +5323,7 @@ function robustSubtract(e, f) {
     y = b - bv
     if(y) {
       g[count++] = y
-    } 
+    }
     _x = q1 + x
     _bv = _x - q1
     _av = _x - _bv
@@ -5341,7 +5343,7 @@ function robustSubtract(e, f) {
     g[count++] = q1
   }
   if(!count) {
-    g[count++] = 0.0  
+    g[count++] = 0.0
   }
   g.length = count
   return g
@@ -5478,7 +5480,7 @@ function linearExpansionSum(e, f) {
     y = b - bv
     if(y) {
       g[count++] = y
-    } 
+    }
     _x = q1 + x
     _bv = _x - q1
     _av = _x - _bv
@@ -5498,7 +5500,7 @@ function linearExpansionSum(e, f) {
     g[count++] = q1
   }
   if(!count) {
-    g[count++] = 0.0  
+    g[count++] = 0.0
   }
   g.length = count
   return g
@@ -5634,7 +5636,7 @@ var orientation4Exact = orientation(4)
 var CACHED = [
   function orientation0() { return 0 },
   function orientation1() { return 0 },
-  function orientation2(a, b) { 
+  function orientation2(a, b) {
     return b[0] - a[0]
   },
   function orientation3(a, b, c) {
@@ -5679,7 +5681,7 @@ var CACHED = [
     var adxcdy = adx * cdy
     var adxbdy = adx * bdy
     var bdxady = bdx * ady
-    var det = adz * (bdxcdy - cdxbdy) 
+    var det = adz * (bdxcdy - cdxbdy)
             + bdz * (cdxady - adxcdy)
             + cdz * (adxbdy - bdxady)
     var permanent = (Math.abs(bdxcdy) + Math.abs(cdxbdy)) * Math.abs(adz)
@@ -5946,7 +5948,7 @@ proto.addPeaks = function(point, cell) {
       var nv = neighbor.vertices
 
       //Test if neighbor is a peak
-      if(neighbor.lastVisited !== -n) {      
+      if(neighbor.lastVisited !== -n) {
         //Compute orientation of p relative to each boundary peak
         var indexOfNeg1 = 0
         for(var j=0; j<=d; ++j) {
@@ -6171,7 +6173,7 @@ function incrementalConvexHull(points, randomSearch) {
   for(var i=d+1; i<n; ++i) {
     triangles.insert(points[i], useRandom)
   }
-  
+
   //Extract boundary cells
   return triangles.boundary()
 }
@@ -6366,13 +6368,13 @@ exports.interleave3 = function(x, y, z) {
   y  = (y | (y<<4))  & 3272356035;
   y  = (y | (y<<2))  & 1227133513;
   x |= (y << 1);
-  
+
   z &= 0x3FF;
   z  = (z | (z<<16)) & 4278190335;
   z  = (z | (z<<8))  & 251719695;
   z  = (z | (z<<4))  & 3272356035;
   z  = (z | (z<<2))  & 1227133513;
-  
+
   return x | (z << 2);
 }
 
@@ -6401,7 +6403,7 @@ module.exports = UnionFind;
 function UnionFind(count) {
   this.roots = new Array(count);
   this.ranks = new Array(count);
-  
+
   for(var i=0; i<count; ++i) {
     this.roots[i] = i;
     this.ranks[i] = 0;
@@ -6526,9 +6528,9 @@ function compareCells(a, b) {
         return d
       }
       return min(l0+a[2], l1) - min(m0+b[2], m1)
-    
+
     //TODO: Maybe optimize n=4 as well?
-    
+
     default:
       var as = a.slice(0)
       as.sort()
@@ -6845,8 +6847,8 @@ function monotoneConvexHull2D(points) {
     //Insert into lower list
     var m = lower.length
     while(m > 1 && orient(
-        points[lower[m-2]], 
-        points[lower[m-1]], 
+        points[lower[m-2]],
+        points[lower[m-1]],
         p) <= 0) {
       m -= 1
       lower.pop()
@@ -6856,8 +6858,8 @@ function monotoneConvexHull2D(points) {
     //Insert into upper list
     m = upper.length
     while(m > 1 && orient(
-        points[upper[m-2]], 
-        points[upper[m-1]], 
+        points[upper[m-2]],
+        points[upper[m-1]],
         p) >= 0) {
       m -= 1
       upper.pop()
@@ -9582,7 +9584,7 @@ function inRing (pt, ring) {
   for (var i = 0, j = ring.length - 1; i < ring.length; j = i++) {
     var xi = ring[i][0], yi = ring[i][1];
     var xj = ring[j][0], yj = ring[j][1];
-    
+
     var intersect = ((yi > pt[1]) != (yj > pt[1]))
         && (pt[0] < (xj - xi) * (pt[1] - yi) / (yj - yi) + xi);
     if (intersect) isInside = !isInside;
@@ -10427,7 +10429,7 @@ arguments[4][59][0].apply(exports,arguments)
  *     ]]
  *   }
  * };
- * 
+ *
  * var kinks = turf.kinks(poly);
  *
  * var resultFeatures = kinks.intersections.features.concat(poly);
@@ -10611,7 +10613,7 @@ var destination = require('turf-destination');
  *     "coordinates": [-77.021884, 38.889563]
  *   }
  * };
- * 
+ *
  * var sliced = turf.lineSlice(start, stop, line);
  *
  * //=line
@@ -10619,7 +10621,7 @@ var destination = require('turf-destination');
  * //=sliced
  */
 
-module.exports = function (startPt, stopPt, line) {  
+module.exports = function (startPt, stopPt, line) {
   var coords;
   if(line.type === 'Feature') coords = line.geometry.coordinates;
   else if(line.type === 'LineString') coords = line.geometry.coordinates;
@@ -10683,7 +10685,7 @@ function pointOnLine (pt, coords) {
       var intersectPt = point(intersect);
       intersectPt.properties.dist = distance(pt, intersectPt, units);
     }
-    
+
     if(start.properties.dist < closestPt.properties.dist) {
       closestPt = start;
       closestPt.properties.index = i;
@@ -10692,12 +10694,12 @@ function pointOnLine (pt, coords) {
      closestPt = stop;
      closestPt.properties.index = i;
     }
-    if(intersectPt && intersectPt.properties.dist < closestPt.properties.dist){ 
+    if(intersectPt && intersectPt.properties.dist < closestPt.properties.dist){
       closestPt = intersectPt;
       closestPt.properties.index = i;
     }
   }
-  
+
   return closestPt;
 }
 
@@ -11262,7 +11264,7 @@ function clone(parent, circular, depth, prototype) {
       if (proto) {
         attrs = Object.getOwnPropertyDescriptor(proto, i);
       }
-      
+
       if (attrs && attrs.set == null) {
         continue;
       }
@@ -11685,7 +11687,7 @@ module.exports = function (bbox, cell, units) {
     }
     currentX += cellWidth;
   }
-  
+
   return fc;
 }
 },{"turf-distance":60,"turf-featurecollection":72,"turf-point":102}],100:[function(require,module,exports){
@@ -11727,7 +11729,7 @@ var destination = require('turf-destination');
  *     "coordinates": [-77.037076, 38.884017]
  *   }
  * };
- * 
+ *
  * var snapped = turf.pointOnLine(line, pt);
  * snapped.properties['marker-color'] = '#00f'
  *
@@ -11739,7 +11741,7 @@ var destination = require('turf-destination');
  * //=result
  */
 
-module.exports = function (line, pt) {  
+module.exports = function (line, pt) {
   var coords;
   if(line.type === 'Feature') coords = line.geometry.coordinates;
   else if(line.type === 'LineString') coords = line.geometry.coordinates;
@@ -11790,7 +11792,7 @@ function pointOnLine (pt, coords) {
       var intersectPt = point(intersect);
       intersectPt.properties.dist = distance(pt, intersectPt, units);
     }
-    
+
     if(start.properties.dist < closestPt.properties.dist) {
       closestPt = start;
       closestPt.properties.index = i;
@@ -11799,12 +11801,12 @@ function pointOnLine (pt, coords) {
      closestPt = stop;
      closestPt.properties.index = i;
     }
-    if(intersectPt && intersectPt.properties.dist < closestPt.properties.dist){ 
+    if(intersectPt && intersectPt.properties.dist < closestPt.properties.dist){
       closestPt = intersectPt;
       closestPt.properties.index = i;
     }
   }
-  
+
   return closestPt;
 }
 
@@ -12634,7 +12636,7 @@ module.exports = function(feature, tolerance, highQuality){
     line.coordinates = simplify(pts, tolerance, highQuality).map(function(coords){
       return [coords.x, coords.y];
     });
-    
+
     return simpleFeature(line, feature.properties);
   } else if(feature.geometry.type === 'Polygon') {
     var poly = {
@@ -12885,7 +12887,7 @@ module.exports = function (bbox, cell, units) {
     }
     currentX += cellWidth;
   }
-  
+
   return fc;
 }
 },{"turf-distance":60,"turf-featurecollection":72,"turf-point":102,"turf-polygon":103}],115:[function(require,module,exports){
@@ -13271,7 +13273,7 @@ function triangulate(vertices) {
 
     // Ensure the vertex array is in order of descending X coordinate
     // (which is needed to ensure a subquadratic runtime), and then find
-    // the bounding box around the points. 
+    // the bounding box around the points.
   vertices.sort(byX);
 
   var i = vertices.length - 1,
@@ -13291,7 +13293,7 @@ function triangulate(vertices) {
   //vertices. This is used like something of a sentinel value to remove
   //cases in the main algorithm, and is removed before we return any
   // results.
- 
+
   // Once found, put it in the "open" list. (The "open" list is for
   // triangles who may still need to be considered; the "closed" list is
   // for triangles which do not.)
