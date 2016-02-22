@@ -459,3 +459,21 @@ html, body {
         font-size: 26pt;
     }
 }
+
+@media screen and (max-height: 750px) {
+    .traksPic {
+        margin: 8vh 0px 0px 0px;
+    }
+
+    .landing h1 {
+        font-size: 64pt;
+    }
+
+    .landing h3 {
+        font-size: 32pt;
+    }
+
+    .landing-links {
+        font-size: 26pt;
+    }
+}
