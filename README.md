@@ -23,4 +23,6 @@ You can have multiple filters on and with the companies, you can select multiple
 1. Some train headings may be slightly off from its actual heading. This is due to some inherent error in the calculation of the train's bearing.
 2. Depending on the time this web application is viewed, either a large or small number of trains may be displayed (due to time zone differences). If none or very few trains are displayed, please use the "Test Page" page.
 3. We only have access to live train data for trains in the UK. As such, this web application only displays trains in the UK (for now).
-4. The Rails.json is a combination of RailReferences.csv and tiplocs.csv, the RailReferences is provided by [NAPTAN](http://data.gov.uk/dataset/naptan) and tiplocs is processed from Network Rail data by [Tom Cairns](http://www.thomas-cairns.co.uk/)
+4. The exact positions, arrival times, and some other data may not match exactly to the train's actual movements, actual arrival times, etc. Some data is calculated and extrapolated from the data provided from the live feed.
+5. This web application has not been completely optimized for page load speed and efficiency. You may see some performance decreases if the page remains open for some time.
+6. Rails.json is a combination of RailReferences.csv and tiplocs.csv; RailReferences is provided by [NAPTAN](http://data.gov.uk/dataset/naptan) and tiplocs is processed from Network Rail data from [Tom Cairns](http://www.thomas-cairns.co.uk/)
